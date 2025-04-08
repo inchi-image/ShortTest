@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="zh-TW"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;短影音靈魂測驗&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Noto Sans TC', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #333;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>min-height: 100vh;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>h1, h2, p {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 10px 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.question, .result, #email-collection {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>animation: fadeIn 0.8s ease forwards;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.option-btn {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 12px 24px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #ff9a9e;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.option-btn:hover {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #fad0c4;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transform: scale(1.05);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>input[type="email"] {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 80%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width: 300px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid #ccc;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 10px 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>button {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: #84fab0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: background-color 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>button:hover {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: #8fd3f4;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>a {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #ff6f91;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>a:hover {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-decoration: underline;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@keyframes fadeIn {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>from {opacity: 0; transform: translateY(20px);}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>to {opacity: 1; transform: translateY(0);}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="start"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;🔮 12題測出你的短影音靈魂類型&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;探索你的拍片天賦，找到專屬於你的爆紅路線！&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button onclick="startQuiz()"&gt;開始測驗！&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="quiz" class="question"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="result" class="result" style="margin-top: 30px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;🎬 你的短影音靈魂類型是：&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1 id="resultTitle" style="margin: 10px 0;"&gt;&lt;/h1&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;img id="resultImage" src="" alt="結果圖片" style="max-width: 250px; margin: 20px auto; display: block;"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="resultDescription" style="text-align: left; margin: 20px auto; max-width: 600px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;&lt;strong&gt;✨ 你的靈魂天賦：&lt;/strong&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p id="resultPersonality"&gt;&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;&lt;strong&gt;🔥 優勢：&lt;/strong&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p id="resultStrength"&gt;&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;&lt;strong&gt;🚀 發展建議：&lt;/strong&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p id="resultSuggestion"&gt;&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;&lt;strong&gt;🎯 適合領域：&lt;/strong&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p id="resultField"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Email收集表單 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="email-collection" style="margin-top: 40px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;🎁 立即領取｜專屬你的「短影音天賦解讀」＋免費諮詢&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;🔮 想知道你真正適合拍哪種短影音嗎？留下Email或加入LINE，我們將：&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;ul style="text-align: left; display: inline-block; margin-bottom: 15px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;li&gt;✅ 根據你的測驗結果，提供量身定制的建議&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;li&gt;✅ 免費給你一次短影音諮詢（價值NT$1,500）&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;li&gt;✅ 解鎖更多打造熱門帳號的小技巧！&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;form id="emailForm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="email" id="email" name="email" placeholder="輸入你的Email" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button type="submit"&gt;領取我的短影音天賦解析&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/form&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p style="margin-top:15px;"&gt;或 👉 &lt;a href="https://lin.ee/RcASSut" target="_blank"&gt;直接加LINE好友預約諮詢&lt;/a&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 分享結果按鈕 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div style="margin-top: 30px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button onclick="shareResult()"&gt;📤 分享我的短影音天賦&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">const questions = [</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"你走進一家神秘的影像咖啡館，你最想停下來看的影片是？",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"森林迷路，天色漸暗，你選哪條路？",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"奇幻市集中，你只能帶走一樣東西，你選？",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"穿越一次機會，你去哪裡？",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"你突然得到一種能力，是？",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"神秘電影院裡播放的影片是？",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"如果你的心是一個世界，它是？",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"朋友要你幫忙拍一支影片作生日禮物，你第一個想法是？",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"你航行到神秘島嶼，他們怎麼迎接你？",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"世界樹下的影像之書，打開後看到的座右銘是？",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"夢境中，你得到的拍片超能力是？",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"穿越到未來世界，你帶回哪個神器？"</p>
+<p class="p1">];</p>
+<p class="p2"><br></p>
+<p class="p1">const options = [</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["劇情型", "講話型", "生活Vlog型", "幽默型"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["劇情型", "講話型", "生活Vlog型", "幽默型"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["劇情型", "講話型", "生活Vlog型", "幽默型"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["劇情型", "講話型", "生活Vlog型", "幽默型"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["劇情型", "講話型", "生活Vlog型", "幽默型"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["劇情型", "講話型", "生活Vlog型", "幽默型"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["劇情型", "講話型", "生活Vlog型", "幽默型"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["劇情型", "講話型", "生活Vlog型", "幽默型"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["劇情型", "講話型", "生活Vlog型", "幽默型"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["劇情型", "講話型", "生活Vlog型", "幽默型"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["美感型", "極簡資訊型"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["美感型", "極簡資訊型"]</p>
+<p class="p1">];</p>
+<p class="p2"><br></p>
+<p class="p1">const scores = {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"劇情型": 0,</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"講話型": 0,</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"情緒型": 0,</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"幽默型": 0,</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"生活Vlog型": 0,</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"美感型": 0,</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"極簡資訊型": 0</p>
+<p class="p1">};</p>
+<p class="p2"><br></p>
+<p class="p1">const resultTexts = {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"劇情型": {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>img: "https://i.imgur.com/kgd4iEw.png",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>personality: "你擅長用故事打動人心，情節設計、角色扮演都是你的強項。",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>strength: "敘事力強、共鳴感高、情緒掌控佳",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>suggestion: "可以嘗試微電影、情境短劇、角色扮演反轉短片。",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>field: "微電影、故事型自媒體、品牌故事拍攝"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"講話型": {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>img: "https://i.imgur.com/9XEIgp2.png",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>personality: "你擅長清楚表達、分享觀點，用語言快速建立連結。",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>strength: "溝通力強、說服力佳、金句製造機",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>suggestion: "可以嘗試講話型短影片、心靈雞湯、經驗談分享。",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>field: "知識型自媒體、演講培訓、品牌顧問"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"生活Vlog型": {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>img: "https://i.imgur.com/GKTXhke.png",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>personality: "你擅長把日常生活拍得溫暖動人，真誠分享讓人感覺被陪伴。",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>strength: "真實感高、親和力佳、陪伴感強",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>suggestion: "可以拍攝日常記錄、旅遊Vlog、美食日常。",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>field: "生活型自媒體、旅遊、美食探店"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"幽默型": {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>img: "https://i.imgur.com/FGjc1Nt.png",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>personality: "你天生就是氣氛製造機，擅長讓人開懷大笑！",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>strength: "節奏感強、笑點敏銳、感染力爆棚",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>suggestion: "可以挑戰惡搞短劇、迷因影片、爆笑反轉短片。",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>field: "搞笑短劇、迷因自媒體、娛樂帳號"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"美感型": {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>img: "https://i.imgur.com/Wg4xAe0.png",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>personality: "你擅長用鏡頭創造美感，色彩、光影、構圖都是你的語言。",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>strength: "審美力高、細節控、風格鮮明",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>suggestion: "可以拍攝美妝、穿搭、攝影、手作相關短影片。",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>field: "美學型自媒體、攝影、品牌視覺經營"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"極簡資訊型": {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>img: "https://i.imgur.com/IXJH2lY.png",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>personality: "你擅長把複雜資訊拆解成簡單易懂的內容！",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>strength: "邏輯清晰、效率高手、重點提煉力強",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>suggestion: "可以做懶人包短影片、快速教學、冷知識分享。",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>field: "資訊型自媒體、懶人包製作、教育領域"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">};</p>
+<p class="p2"><br></p>
+<p class="p1">let currentQuestion = 0;</p>
+<p class="p2"><br></p>
+<p class="p1">function startQuiz() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('start').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('quiz').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>showQuestion();</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function showQuestion() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const quizDiv = document.getElementById('quiz');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>quizDiv.innerHTML = `&lt;h2&gt;${questions[currentQuestion]}&lt;/h2&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>options[currentQuestion].forEach(type =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>quizDiv.innerHTML += `&lt;button class='option-btn' onclick="selectOption('${type}')"&gt;${type}&lt;/button&gt;&lt;br&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function selectOption(type) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>scores[type]++;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>currentQuestion++;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (currentQuestion &gt;= questions.length) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>showResult();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>showQuestion();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function showResult() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('quiz').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('result').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const maxType = Object.keys(scores).reduce((a, b) =&gt; scores[a] &gt; scores[b] ? a : b);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const res = resultTexts[maxType];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('resultTitle').innerText = maxType;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('resultImage').src = res.img;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('resultPersonality').innerText = res.personality;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('resultStrength').innerText = res.strength;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('resultSuggestion').innerText = res.suggestion;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('resultField').innerText = res.field;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('email-collection').style.display = 'block';</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// Email送出到Google表單</p>
+<p class="p1">document.getElementById('emailForm').addEventListener('submit', function(e) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const email = document.getElementById('email').value;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const formData = new FormData();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>formData.append('entry.1511266048', email); // 對應你的表單欄位ID</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>fetch('https://docs.google.com/forms/d/e/1FAIpQLSe1Z5cXqXFsPdKsxoFujM1EzWQdxxtAq-SpAOwLTBpZq62CDQ/formResponse', {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>method: 'POST',</p>
+<p class="p1"><span class="Apple-converted-space">    </span>mode: 'no-cors',</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body: formData</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}).then(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>alert('✨ 送出成功！請記得加入LINE好友喔～');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('emailForm').reset();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}).catch(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>alert('送出失敗，請稍後再試～');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1">});</p>
+<p class="p2"><br></p>
+<p class="p1">// 分享結果</p>
+<p class="p1">function shareResult() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const title = document.getElementById('resultTitle').innerText;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const desc = document.getElementById('resultPersonality').innerText;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const shareText = `我剛測出我是「${title}」短影音靈魂類型！✨\n${desc}\n來測你是什麼👉 ${window.location.href}`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>navigator.clipboard.writeText(shareText).then(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>alert('結果已複製！快貼給朋友炫耀吧～✨');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}).catch(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>alert('複製失敗，請手動複製喔～');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1">}</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
