@@ -74,6 +74,7 @@
     }
   </style>
 </head>
+
 <body>
   <div id="start">
     <h1>🔮 12題測出你的短影音靈魂類型</h1>
@@ -103,26 +104,16 @@
       <p id="resultField"></p>
     </div>
 
-    <!-- Email收集表單 -->
     <div id="email-collection" style="margin-top: 40px;">
       <h2>🎁 立即領取｜專屬你的「短影音天賦解讀」＋免費諮詢</h2>
-      <p>🔮 想知道你真正適合拍哪種短影音嗎？留下Email或加入LINE，我們將：</p>
-      <ul style="text-align: left; display: inline-block; margin-bottom: 15px;">
-        <li>✅ 根據你的測驗結果，提供量身定制的建議</li>
-        <li>✅ 免費給你一次短影音諮詢（價值NT$1,500）</li>
-        <li>✅ 解鎖更多打造熱門帳號的小技巧！</li>
-      </ul>
-
       <form id="emailForm">
         <input type="email" id="email" name="email" placeholder="輸入你的Email" required>
         <br>
         <button type="submit">領取我的短影音天賦解析</button>
       </form>
-
       <p style="margin-top:15px;">或 👉 <a href="https://lin.ee/RcASSut" target="_blank">直接加LINE好友預約諮詢</a></p>
     </div>
 
-    <!-- 分享結果按鈕 -->
     <div style="margin-top: 30px;">
       <button onclick="shareResult()">📤 分享我的短影音天賦</button>
     </div>
@@ -130,7 +121,7 @@
 <script>
 const questions = [
   "你走進一家神秘的影像咖啡館，你最想停下來看的影片是？",
-  "森林迷路，天色漸暗，你選哪條路？",
+  "森林迷路，天色漸暗，你會？",
   "奇幻市集中，你只能帶走一樣東西，你選？",
   "穿越一次機會，你去哪裡？",
   "你突然得到一種能力，是？",
@@ -144,73 +135,83 @@ const questions = [
 ];
 
 const options = [
-  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
-  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
-  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
-  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
-  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
-  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
-  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
-  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
-  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
-  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
-  ["美感型", "極簡資訊型"],
-  ["美感型", "極簡資訊型"]
+  ["扣人心弦的小故事 📖", "一句話讓人恍然大悟的短片 🎤", "溫暖療癒的生活記錄 🌸", "讓人爆笑噴飯的惡搞影片 🤣"],
+  ["隨感覺找到新路徑 🧭", "冷靜分析地圖和線索 🗺️", "拿出相機記錄這段冒險 📸", "自嘲一定有人來救我 😂"],
+  ["一本會講故事的日記 📚", "能一語道破真理的水晶球 🔮", "一台能記錄生活的魔法相機 📷", "一副能變出笑聲的撲克牌 🃏"],
+  ["回到一個重要的故事現場 🏰", "參加一場影響世界的大辯論 🏛️", "經歷不同地方的日常生活 🌍", "亂入一場爆笑綜藝節目 🎪"],
+  ["創造動人故事的能力 ✍️", "讓人秒懂的表達力 🎤", "把日常拍得超有溫度的眼光 📹", "讓人笑翻的天賦 🎭"],
+  ["傳奇冒險故事片 🌟", "激勵人心的TED演講 🎙️", "旅人眼中的溫柔世界 ✈️", "看了肚子痛的爆笑短片 😂"],
+  ["一座故事森林 🌳", "一座知識燈塔 🕯️", "一個溫暖小鎮 🏘️", "一個歡樂遊樂場 🎡"],
+  ["幫他演一個感人的小劇情 🎬", "說一句走心的祝福 🎙️", "拍下你們日常的點滴 📹", "惡搞一支笑到噴飯的影片 🤪"],
+  ["請你講一個故事換取寶藏 🗺️", "要你分享智慧才能入島 🔮", "帶你參加他們的日常祭典 🎊", "比賽誰能講最好笑的笑話 🎭"],
+  ["你的故事值得被世界聽見 📖", "一句話可以改變世界 🎤", "平凡日常是最珍貴的奇蹟 🌈", "讓笑聲成為你的超能力 🤡"],
+  ["讓所有畫面充滿治癒美感 🎨", "瞬間提煉出重點的能力 🧠"],
+  ["一台能創造夢境畫面的相機 🪄", "一副能用一句話講清一切的耳機 🎧"]
 ];
+
+const mapping = {
+  "扣人心弦的小故事 📖": "劇情型",
+  "一句話讓人恍然大悟的短片 🎤": "講話型",
+  "溫暖療癒的生活記錄 🌸": "生活Vlog型",
+  "讓人爆笑噴飯的惡搞影片 🤣": "幽默型",
+  "隨感覺找到新路徑 🧭": "劇情型",
+  "冷靜分析地圖和線索 🗺️": "講話型",
+  "拿出相機記錄這段冒險 📸": "生活Vlog型",
+  "自嘲一定有人來救我 😂": "幽默型",
+  "一本會講故事的日記 📚": "劇情型",
+  "能一語道破真理的水晶球 🔮": "講話型",
+  "一台能記錄生活的魔法相機 📷": "生活Vlog型",
+  "一副能變出笑聲的撲克牌 🃏": "幽默型",
+  "回到一個重要的故事現場 🏰": "劇情型",
+  "參加一場影響世界的大辯論 🏛️": "講話型",
+  "經歷不同地方的日常生活 🌍": "生活Vlog型",
+  "亂入一場爆笑綜藝節目 🎪": "幽默型",
+  "創造動人故事的能力 ✍️": "劇情型",
+  "讓人秒懂的表達力 🎤": "講話型",
+  "把日常拍得超有溫度的眼光 📹": "生活Vlog型",
+  "讓人笑翻的天賦 🎭": "幽默型",
+  "傳奇冒險故事片 🌟": "劇情型",
+  "激勵人心的TED演講 🎙️": "講話型",
+  "旅人眼中的溫柔世界 ✈️": "生活Vlog型",
+  "看了肚子痛的爆笑短片 😂": "幽默型",
+  "一座故事森林 🌳": "劇情型",
+  "一座知識燈塔 🕯️": "講話型",
+  "一個溫暖小鎮 🏘️": "生活Vlog型",
+  "一個歡樂遊樂場 🎡": "幽默型",
+  "幫他演一個感人的小劇情 🎬": "劇情型",
+  "說一句走心的祝福 🎙️": "講話型",
+  "拍下你們日常的點滴 📹": "生活Vlog型",
+  "惡搞一支笑到噴飯的影片 🤪": "幽默型",
+  "請你講一個故事換取寶藏 🗺️": "劇情型",
+  "要你分享智慧才能入島 🔮": "講話型",
+  "帶你參加他們的日常祭典 🎊": "生活Vlog型",
+  "比賽誰能講最好笑的笑話 🎭": "幽默型",
+  "你的故事值得被世界聽見 📖": "劇情型",
+  "一句話可以改變世界 🎤": "講話型",
+  "平凡日常是最珍貴的奇蹟 🌈": "生活Vlog型",
+  "讓笑聲成為你的超能力 🤡": "幽默型",
+  "讓所有畫面充滿治癒美感 🎨": "美感型",
+  "瞬間提煉出重點的能力 🧠": "極簡資訊型",
+  "一台能創造夢境畫面的相機 🪄": "美感型",
+  "一副能用一句話講清一切的耳機 🎧": "極簡資訊型"
+};
 
 const scores = {
   "劇情型": 0,
   "講話型": 0,
-  "情緒型": 0,
-  "幽默型": 0,
   "生活Vlog型": 0,
+  "幽默型": 0,
   "美感型": 0,
   "極簡資訊型": 0
 };
 
 const resultTexts = {
-  "劇情型": {
-    img: "https://i.imgur.com/kgd4iEw.png",
-    personality: "你擅長用故事打動人心，情節設計、角色扮演都是你的強項。",
-    strength: "敘事力強、共鳴感高、情緒掌控佳",
-    suggestion: "可以嘗試微電影、情境短劇、角色扮演反轉短片。",
-    field: "微電影、故事型自媒體、品牌故事拍攝"
-  },
-  "講話型": {
-    img: "https://i.imgur.com/9XEIgp2.png",
-    personality: "你擅長清楚表達、分享觀點，用語言快速建立連結。",
-    strength: "溝通力強、說服力佳、金句製造機",
-    suggestion: "可以嘗試講話型短影片、心靈雞湯、經驗談分享。",
-    field: "知識型自媒體、演講培訓、品牌顧問"
-  },
-  "生活Vlog型": {
-    img: "https://i.imgur.com/GKTXhke.png",
-    personality: "你擅長把日常生活拍得溫暖動人，真誠分享讓人感覺被陪伴。",
-    strength: "真實感高、親和力佳、陪伴感強",
-    suggestion: "可以拍攝日常記錄、旅遊Vlog、美食日常。",
-    field: "生活型自媒體、旅遊、美食探店"
-  },
-  "幽默型": {
-    img: "https://i.imgur.com/FGjc1Nt.png",
-    personality: "你天生就是氣氛製造機，擅長讓人開懷大笑！",
-    strength: "節奏感強、笑點敏銳、感染力爆棚",
-    suggestion: "可以挑戰惡搞短劇、迷因影片、爆笑反轉短片。",
-    field: "搞笑短劇、迷因自媒體、娛樂帳號"
-  },
-  "美感型": {
-    img: "https://i.imgur.com/Wg4xAe0.png",
-    personality: "你擅長用鏡頭創造美感，色彩、光影、構圖都是你的語言。",
-    strength: "審美力高、細節控、風格鮮明",
-    suggestion: "可以拍攝美妝、穿搭、攝影、手作相關短影片。",
-    field: "美學型自媒體、攝影、品牌視覺經營"
-  },
-  "極簡資訊型": {
-    img: "https://i.imgur.com/IXJH2lY.png",
-    personality: "你擅長把複雜資訊拆解成簡單易懂的內容！",
-    strength: "邏輯清晰、效率高手、重點提煉力強",
-    suggestion: "可以做懶人包短影片、快速教學、冷知識分享。",
-    field: "資訊型自媒體、懶人包製作、教育領域"
-  }
+  "劇情型": { img: "https://i.imgur.com/kgd4iEw.png", personality: "你擅長用故事打動人心...", strength: "敘事力強", suggestion: "挑戰微電影", field: "故事型帳號" },
+  "講話型": { img: "https://i.imgur.com/9XEIgp2.png", personality: "你擅長清楚表達...", strength: "說服力佳", suggestion: "分享觀點", field: "知識型帳號" },
+  "生活Vlog型": { img: "https://i.imgur.com/GKTXhke.png", personality: "你拍得出溫暖療癒感...", strength: "陪伴力強", suggestion: "記錄生活日常", field: "生活類Vlog" },
+  "幽默型": { img: "https://i.imgur.com/FGjc1Nt.png", personality: "你天生製造笑聲...", strength: "笑點敏銳", suggestion: "製作惡搞短劇", field: "搞笑帳號" },
+  "美感型": { img: "https://i.imgur.com/Wg4xAe0.png", personality: "你有絕佳的美感...", strength: "審美力高", suggestion: "拍攝美妝穿搭", field: "美感類帳號" },
+  "極簡資訊型": { img: "https://i.imgur.com/IXJH2lY.png", personality: "你擅長提煉重點...", strength: "重點拆解高手", suggestion: "製作懶人包", field: "資訊型帳號" }
 };
 
 let currentQuestion = 0;
@@ -224,12 +225,13 @@ function startQuiz() {
 function showQuestion() {
   const quizDiv = document.getElementById('quiz');
   quizDiv.innerHTML = `<h2>${questions[currentQuestion]}</h2>`;
-  options[currentQuestion].forEach(type => {
-    quizDiv.innerHTML += `<button class='option-btn' onclick="selectOption('${type}')">${type}</button><br>`;
+  options[currentQuestion].forEach(opt => {
+    quizDiv.innerHTML += `<button class='option-btn' onclick="selectOption('${opt}')">${opt}</button><br>`;
   });
 }
 
-function selectOption(type) {
+function selectOption(choiceText) {
+  const type = mapping[choiceText];
   scores[type]++;
   currentQuestion++;
   if (currentQuestion >= questions.length) {
@@ -244,7 +246,6 @@ function showResult() {
   document.getElementById('result').style.display = 'block';
   const maxType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
   const res = resultTexts[maxType];
-
   document.getElementById('resultTitle').innerText = maxType;
   document.getElementById('resultImage').src = res.img;
   document.getElementById('resultPersonality').innerText = res.personality;
@@ -254,20 +255,18 @@ function showResult() {
   document.getElementById('email-collection').style.display = 'block';
 }
 
-// Email送出到Google表單
+// Email送到Google表單
 document.getElementById('emailForm').addEventListener('submit', function(e) {
   e.preventDefault();
   const email = document.getElementById('email').value;
-
   const formData = new FormData();
-  formData.append('entry.1511266048', email); // 對應你的表單欄位ID
-
+  formData.append('entry.1511266048', email);
   fetch('https://docs.google.com/forms/d/e/1FAIpQLSe1Z5cXqXFsPdKsxoFujM1EzWQdxxtAq-SpAOwLTBpZq62CDQ/formResponse', {
     method: 'POST',
     mode: 'no-cors',
     body: formData
   }).then(() => {
-    alert('✨ 送出成功！請記得加入LINE好友喔～');
+    alert('✨ 送出成功！記得加入LINE喔！');
     document.getElementById('emailForm').reset();
   }).catch(() => {
     alert('送出失敗，請稍後再試～');
