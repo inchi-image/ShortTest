@@ -255,16 +255,17 @@ function showResult() {
   document.getElementById('email-collection').style.display = 'block';
 }
 
-// Email送到Google表單
+// Email送到Google Apps Script
 document.getElementById('emailForm').addEventListener('submit', function(e) {
   e.preventDefault();
   const email = document.getElementById('email').value;
-  const formData = new FormData();
-  formData.append('entry.1511266048', email);
-  fetch('https://docs.google.com/forms/d/e/1FAIpQLSe1Z5cXqXFsPdKsxoFujM1EzWQdxxtAq-SpAOwLTBpZq62CDQ/formResponse', {
+
+  fetch('https://script.google.com/macros/s/AKfycbzLnIl6NxxcX3bdO4vzCbWUGESOHYN1H-LNMmIe72HY9AsLI-Ex9y1JHuB_RdTdXCg/exec', {
     method: 'POST',
     mode: 'no-cors',
-    body: formData
+    body: new URLSearchParams({
+      email: email
+    })
   }).then(() => {
     alert('✨ 送出成功！記得加入LINE喔！');
     document.getElementById('emailForm').reset();
