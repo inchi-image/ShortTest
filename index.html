@@ -75,48 +75,218 @@
   </style>
 </head>
 <body>
-<div id="start">
-  <h1>🔮 12題測出你的短影音靈魂類型</h1>
-  <p>探索你的拍片天賦，找到專屬於你的爆紅路線！</p>
-  <button onclick="startQuiz()">開始測驗！</button>
-</div>
-
-<div id="quiz" class="question"></div>
-
-<div id="result" class="result" style="margin-top: 30px;">
-  <h2>🎬 你的短影音靈魂類型是：</h2>
-  <h1 id="resultTitle" style="margin: 10px 0;"></h1>
-  <img id="resultImage" src="" alt="結果圖片" style="max-width: 250px; margin: 20px auto; display: block;">
-  <div id="resultDescription" style="text-align: left; margin: 20px auto; max-width: 600px;">
-    <p><strong>✨ 你的靈魂天賦：</strong></p>
-    <p id="resultPersonality"></p>
-    <p><strong>🔥 優勢：</strong></p>
-    <p id="resultStrength"></p>
-    <p><strong>🚀 發展建議：</strong></p>
-    <p id="resultSuggestion"></p>
-    <p><strong>🎯 適合領域：</strong></p>
-    <p id="resultField"></p>
+  <div id="start">
+    <h1>🔮 12題測出你的短影音靈魂類型</h1>
+    <p>探索你的拍片天賦，找到專屬於你的爆紅路線！</p>
+    <button onclick="startQuiz()">開始測驗！</button>
   </div>
 
-  <div id="email-collection" style="margin-top: 40px;">
-    <h2>🎁 立即領取｜專屬你的「短影音天賦解讀」＋免費諮詢</h2>
-    <form id="emailForm">
-      <input type="email" id="email" name="email" placeholder="輸入你的Email" required>
-      <br>
-      <button type="submit">領取我的短影音天賦解析</button>
-    </form>
-    <p style="margin-top:15px;">或 👉 <a href="https://lin.ee/RcASSut" target="_blank">直接加LINE好友預約諮詢</a></p>
-  </div>
+  <div id="quiz" class="question"></div>
 
-  <div style="margin-top: 30px;">
-    <button onclick="shareResult()">📤 分享我的短影音天賦</button>
-  </div>
-</div>
+  <div id="result" class="result" style="margin-top: 30px;">
+    <h2>🎬 你的短影音靈魂類型是：</h2>
+    <h1 id="resultTitle" style="margin: 10px 0;"></h1>
 
+    <img id="resultImage" src="" alt="結果圖片" style="max-width: 250px; margin: 20px auto; display: block;">
+
+    <div id="resultDescription" style="text-align: left; margin: 20px auto; max-width: 600px;">
+      <p><strong>✨ 你的靈魂天賦：</strong></p>
+      <p id="resultPersonality"></p>
+
+      <p><strong>🔥 優勢：</strong></p>
+      <p id="resultStrength"></p>
+
+      <p><strong>🚀 發展建議：</strong></p>
+      <p id="resultSuggestion"></p>
+
+      <p><strong>🎯 適合領域：</strong></p>
+      <p id="resultField"></p>
+    </div>
+
+    <!-- Email收集表單 -->
+    <div id="email-collection" style="margin-top: 40px;">
+      <h2>🎁 立即領取｜專屬你的「短影音天賦解讀」＋免費諮詢</h2>
+      <p>🔮 想知道你真正適合拍哪種短影音嗎？留下Email或加入LINE，我們將：</p>
+      <ul style="text-align: left; display: inline-block; margin-bottom: 15px;">
+        <li>✅ 根據你的測驗結果，提供量身定制的建議</li>
+        <li>✅ 免費給你一次短影音諮詢（價值NT$1,500）</li>
+        <li>✅ 解鎖更多打造熱門帳號的小技巧！</li>
+      </ul>
+
+      <form id="emailForm">
+        <input type="email" id="email" name="email" placeholder="輸入你的Email" required>
+        <br>
+        <button type="submit">領取我的短影音天賦解析</button>
+      </form>
+
+      <p style="margin-top:15px;">或 👉 <a href="https://lin.ee/RcASSut" target="_blank">直接加LINE好友預約諮詢</a></p>
+    </div>
+
+    <!-- 分享結果按鈕 -->
+    <div style="margin-top: 30px;">
+      <button onclick="shareResult()">📤 分享我的短影音天賦</button>
+    </div>
+  </div>
 <script>
-// Placeholder for complete JavaScript (shortened for demonstration)
-function startQuiz() { document.getElementById('start').style.display = 'none'; document.getElementById('quiz').style.display = 'block'; }
-function shareResult() { alert('分享功能示範'); }
+const questions = [
+  "你走進一家神秘的影像咖啡館，你最想停下來看的影片是？",
+  "森林迷路，天色漸暗，你選哪條路？",
+  "奇幻市集中，你只能帶走一樣東西，你選？",
+  "穿越一次機會，你去哪裡？",
+  "你突然得到一種能力，是？",
+  "神秘電影院裡播放的影片是？",
+  "如果你的心是一個世界，它是？",
+  "朋友要你幫忙拍一支影片作生日禮物，你第一個想法是？",
+  "你航行到神秘島嶼，他們怎麼迎接你？",
+  "世界樹下的影像之書，打開後看到的座右銘是？",
+  "夢境中，你得到的拍片超能力是？",
+  "穿越到未來世界，你帶回哪個神器？"
+];
+
+const options = [
+  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
+  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
+  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
+  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
+  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
+  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
+  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
+  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
+  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
+  ["劇情型", "講話型", "生活Vlog型", "幽默型"],
+  ["美感型", "極簡資訊型"],
+  ["美感型", "極簡資訊型"]
+];
+
+const scores = {
+  "劇情型": 0,
+  "講話型": 0,
+  "情緒型": 0,
+  "幽默型": 0,
+  "生活Vlog型": 0,
+  "美感型": 0,
+  "極簡資訊型": 0
+};
+
+const resultTexts = {
+  "劇情型": {
+    img: "https://i.imgur.com/kgd4iEw.png",
+    personality: "你擅長用故事打動人心，情節設計、角色扮演都是你的強項。",
+    strength: "敘事力強、共鳴感高、情緒掌控佳",
+    suggestion: "可以嘗試微電影、情境短劇、角色扮演反轉短片。",
+    field: "微電影、故事型自媒體、品牌故事拍攝"
+  },
+  "講話型": {
+    img: "https://i.imgur.com/9XEIgp2.png",
+    personality: "你擅長清楚表達、分享觀點，用語言快速建立連結。",
+    strength: "溝通力強、說服力佳、金句製造機",
+    suggestion: "可以嘗試講話型短影片、心靈雞湯、經驗談分享。",
+    field: "知識型自媒體、演講培訓、品牌顧問"
+  },
+  "生活Vlog型": {
+    img: "https://i.imgur.com/GKTXhke.png",
+    personality: "你擅長把日常生活拍得溫暖動人，真誠分享讓人感覺被陪伴。",
+    strength: "真實感高、親和力佳、陪伴感強",
+    suggestion: "可以拍攝日常記錄、旅遊Vlog、美食日常。",
+    field: "生活型自媒體、旅遊、美食探店"
+  },
+  "幽默型": {
+    img: "https://i.imgur.com/FGjc1Nt.png",
+    personality: "你天生就是氣氛製造機，擅長讓人開懷大笑！",
+    strength: "節奏感強、笑點敏銳、感染力爆棚",
+    suggestion: "可以挑戰惡搞短劇、迷因影片、爆笑反轉短片。",
+    field: "搞笑短劇、迷因自媒體、娛樂帳號"
+  },
+  "美感型": {
+    img: "https://i.imgur.com/Wg4xAe0.png",
+    personality: "你擅長用鏡頭創造美感，色彩、光影、構圖都是你的語言。",
+    strength: "審美力高、細節控、風格鮮明",
+    suggestion: "可以拍攝美妝、穿搭、攝影、手作相關短影片。",
+    field: "美學型自媒體、攝影、品牌視覺經營"
+  },
+  "極簡資訊型": {
+    img: "https://i.imgur.com/IXJH2lY.png",
+    personality: "你擅長把複雜資訊拆解成簡單易懂的內容！",
+    strength: "邏輯清晰、效率高手、重點提煉力強",
+    suggestion: "可以做懶人包短影片、快速教學、冷知識分享。",
+    field: "資訊型自媒體、懶人包製作、教育領域"
+  }
+};
+
+let currentQuestion = 0;
+
+function startQuiz() {
+  document.getElementById('start').style.display = 'none';
+  document.getElementById('quiz').style.display = 'block';
+  showQuestion();
+}
+
+function showQuestion() {
+  const quizDiv = document.getElementById('quiz');
+  quizDiv.innerHTML = `<h2>${questions[currentQuestion]}</h2>`;
+  options[currentQuestion].forEach(type => {
+    quizDiv.innerHTML += `<button class='option-btn' onclick="selectOption('${type}')">${type}</button><br>`;
+  });
+}
+
+function selectOption(type) {
+  scores[type]++;
+  currentQuestion++;
+  if (currentQuestion >= questions.length) {
+    showResult();
+  } else {
+    showQuestion();
+  }
+}
+
+function showResult() {
+  document.getElementById('quiz').style.display = 'none';
+  document.getElementById('result').style.display = 'block';
+  const maxType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+  const res = resultTexts[maxType];
+
+  document.getElementById('resultTitle').innerText = maxType;
+  document.getElementById('resultImage').src = res.img;
+  document.getElementById('resultPersonality').innerText = res.personality;
+  document.getElementById('resultStrength').innerText = res.strength;
+  document.getElementById('resultSuggestion').innerText = res.suggestion;
+  document.getElementById('resultField').innerText = res.field;
+  document.getElementById('email-collection').style.display = 'block';
+}
+
+// Email送出到Google表單
+document.getElementById('emailForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+
+  const formData = new FormData();
+  formData.append('entry.1511266048', email); // 對應你的表單欄位ID
+
+  fetch('https://docs.google.com/forms/d/e/1FAIpQLSe1Z5cXqXFsPdKsxoFujM1EzWQdxxtAq-SpAOwLTBpZq62CDQ/formResponse', {
+    method: 'POST',
+    mode: 'no-cors',
+    body: formData
+  }).then(() => {
+    alert('✨ 送出成功！請記得加入LINE好友喔～');
+    document.getElementById('emailForm').reset();
+  }).catch(() => {
+    alert('送出失敗，請稍後再試～');
+  });
+});
+
+// 分享結果
+function shareResult() {
+  const title = document.getElementById('resultTitle').innerText;
+  const desc = document.getElementById('resultPersonality').innerText;
+  const shareText = `我剛測出我是「${title}」短影音靈魂類型！✨\n${desc}\n來測你是什麼👉 ${window.location.href}`;
+
+  navigator.clipboard.writeText(shareText).then(() => {
+    alert('結果已複製！快貼給朋友炫耀吧～✨');
+  }).catch(() => {
+    alert('複製失敗，請手動複製喔～');
+  });
+}
 </script>
+
 </body>
 </html>
